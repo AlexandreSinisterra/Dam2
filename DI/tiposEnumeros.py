@@ -14,3 +14,11 @@ cadea = "Esto es una cadea con comillas 'dobres'"
 cadea2 = 'Esto es una cadea con comillas "dobres"'
 print(type(cadea))
 print(type(cadea2))
+
+d = {1: "uno",
+     2: "dps",
+     3: "tres"}
+print(d[3])
+
+t2= 3,6,5,None
+print(t2)
