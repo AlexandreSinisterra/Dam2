@@ -12,6 +12,10 @@ public class prueba {
         String rAFichero = "/home/dam/Documentos/DirPrueba/pulgar";
         System.out.println(eFicheiro(rAFichero));
         System.out.println(modoAcceso(rADirectorio,nombreFichero));
+        System.out.println(calculaLonxitude(rADirectorio,nombreFichero));
+        System.out.println(mLectura(rADirectorio,nombreFichero));
+        System.out.println(mEscritura(rADirectorio,nombreFichero));
+
     }
 
     public static String creaDirectorio(String directorio) {
@@ -78,5 +82,24 @@ public class prueba {
     }
 
 
+    public static String calculaLonxitude(String dirName, String fileName) {
+        File f = new File(dirName, fileName);
+
+        return ("- longitud: " + f.length() +" bytes");
+    }
+
+
+    public static String mLectura(String dirName, String fileName) {
+        File f = new File(dirName, fileName);
+                f.setReadOnly();
+        return modoAcceso(dirName,fileName);
+    }
+
+
+    public static String mEscritura(String dirName, String fileName) {
+        File f = new File(dirName, fileName);
+            f.setWritable(true);
+        return modoAcceso(dirName,fileName);
+    }
 
 }
