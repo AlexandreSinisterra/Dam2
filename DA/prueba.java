@@ -15,6 +15,7 @@ public class prueba {
         System.out.println(calculaLonxitude(rADirectorio,nombreFichero));
         System.out.println(mLectura(rADirectorio,nombreFichero));
         System.out.println(mEscritura(rADirectorio,nombreFichero));
+        System.out.println(borrarFicheiro(rADirectorio,nombreFichero));
 
     }
 
@@ -102,4 +103,19 @@ public class prueba {
         return modoAcceso(dirName,fileName);
     }
 
+
+    public static String borrarFicheiro(String dirName, String fileName) {
+        File f = new File(dirName, fileName);
+        String fichero = dirName+"/"+fileName;
+        String mensaje;
+
+        if (eFicheiro(fichero).contains("non")){
+            mensaje="- fichero no existe";
+        }else {
+            f.delete();
+            mensaje= "- borrado";
+        }
+
+        return mensaje;
+    }
 }
