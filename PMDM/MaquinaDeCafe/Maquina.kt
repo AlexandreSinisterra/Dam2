@@ -99,7 +99,6 @@ object MaquinadelCafe {
                     Thread.sleep(500)
                     estadoactual = EstadoMaquinaCafe.Limpiando
                 }
-                else -> break
             }
         }
     }
