@@ -131,4 +131,21 @@ public class prueba {
         }
         return mensaje;
     }
+
+    public static void mContido(String dirName) {
+        File dir = new File(dirName);
+
+        if (dir.exists() && dir.isDirectory()) {
+            String[] contido = dir.list();
+
+            if (contido != null && contido.length > 0) {
+                for (String t : contido) {
+                    System.out.println(t);
+                }
+
+            } else {
+                System.out.println("No tiene contenido.");
+            }
+        }
+    }
 }
