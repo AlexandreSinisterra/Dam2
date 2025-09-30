@@ -1,9 +1,10 @@
 import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.*;
 
 public class prueba {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String rADirectorio = "/home/dam/Documentos/DirPrueba";
         System.out.println(creaDirectorio(rADirectorio));
         System.out.println(eDirectorio(rADirectorio));
@@ -16,6 +17,7 @@ public class prueba {
         System.out.println(mLectura(rADirectorio,nombreFichero));
         System.out.println(mEscritura(rADirectorio,nombreFichero));
         System.out.println(borrarFicheiro(rADirectorio,nombreFichero));
+        System.out.println(borrarDirectorio(rADirectorio));
 
     }
 
@@ -116,6 +118,17 @@ public class prueba {
             mensaje= "- borrado";
         }
 
+        return mensaje;
+    }
+
+    public static String borrarDirectorio(String dirName) throws IOException {
+        File directorio = new File(dirName);
+        String mensaje;
+        if (directorio.delete()) {
+            mensaje = "Fichero borrado correctamente.";
+        } else {
+            mensaje = "No se pudo borrar el fichero.";
+        }
         return mensaje;
     }
 }
