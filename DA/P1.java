@@ -4,7 +4,8 @@ import java.io.*;
 public class P1 {
 
     public static void main(String[] args) throws IOException {
-        /**
+
+        /*
         String rADirectorio = "/home/dam/Documentos/DirPrueba";
         System.out.println(creaDirectorio(rADirectorio));
         System.out.println(eDirectorio(rADirectorio));
@@ -20,7 +21,8 @@ public class P1 {
         mContido(rADirectorio);
         System.out.println(borrarFicheiro(rADirectorio,nombreFichero));
         System.out.println(borrarDirectorio(rADirectorio));
-         **/
+         */
+
         System.out.println(creaDirectorio("/home/dam/IdeaProjects/arquivosdir"));
         System.out.println(eDirectorio("/home/dam/IdeaProjects/arquivosdir/"));
         System.out.println(crearFicheiro("/home/dam/IdeaProjects/arquivosdir","Products1.txt"));
