@@ -5,7 +5,11 @@ import java.util.Arrays;
 
 public class Parte2 {
     public static void main(String[] args) throws IOException {
-
+/**
+ * no se porque en el github no se cambian las rutas, se supone que pone
+ * String ruta1 = "C:\\Users\\sanda\\Desktop\\Ricardo.jfif";
+ * String ruta2 = "C:\\Users\\sanda\\Desktop\\b.jfif";
+ */
         String ruta1 = "C:\\Users\\sanda\\Desktop\\Ricardo.jfif";
         String ruta2 = "C:\\Users\\sanda\\Desktop\\b.jfif";
 
