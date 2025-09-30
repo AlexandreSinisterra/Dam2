@@ -34,10 +34,10 @@ public class Parte3 {
                 dos.writeUTF(frase);
                 System.out.println("tamaño del fichero: " + dos.size() + " bytes");
             }
-
             System.out.println("Tamaño final del fichero: " + dos.size() + " bytes");
             System.out.println("");
         }
+
         catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -50,10 +50,9 @@ public class Parte3 {
                 System.out.println("quedan: " + fis.available() + " bytes por leer");
                 System.out.println("Cadena: " + dis.readUTF());
             }
-
             System.out.println("Ya no queda nada por leer");
-
         }
+
         catch (IOException e) {
             throw new RuntimeException(e);
         }
