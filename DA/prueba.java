@@ -136,11 +136,11 @@ public class prueba {
     public static void mContido(String dirName) {
         File dir = new File(dirName);
 
-            String[] contido = dir.list();
+            String[] contenido = dir.list();
 
-            if (contido.length > 0) {
-                for (String t : contido) {
-                    System.out.println(t);
+            if (contenido.length > 0) {
+                for (String a : contenido) {
+                    System.out.println(a);
                 }
 
             } else {
