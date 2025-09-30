@@ -6,13 +6,13 @@ import java.util.Arrays;
 public class Parte1  {
 
     public static void main(String[] args) throws IOException {
-        crearFicheiro("/home/dam/Escritorio","texto1.txt");
-        escribirTexto("/home/dam/Escritorio/texto1.txt","Tanjiro\n" +
+        crearFicheiro("C:\\Users\\sanda\\Desktop","texto1.txt");
+        escribirTexto("C:\\Users\\sanda\\Desktop\\texto1.txt","Tanjiro\n" +
                 "Nezuko\n" +
                 "Muzan\n");
-        crearFicheiro("/home/dam/Escritorio","texto2.txt");
-        copiarArchivo("/home/dam/Escritorio/texto1.txt","/home/dam/Escritorio/texto2.txt");
-        copiarArchivo2("/home/dam/Escritorio/texto1.txt","/home/dam/Escritorio/texto2.txt");
+        crearFicheiro("C:\\Users\\sanda\\Desktop","texto2.txt");
+        copiarArchivo("C:\\Users\\sanda\\Desktop\\texto1.txt","C:\\Users\\sanda\\Desktop\\texto2.txt");
+        copiarArchivo2("C:\\Users\\sanda\\Desktop\\texto1.txt","C:\\Users\\sanda\\Desktop\\texto2.txt");
     }
 
 

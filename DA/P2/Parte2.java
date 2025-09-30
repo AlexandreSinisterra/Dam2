@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class Parte2 {
     public static void main(String[] args) throws IOException {
 
-        String ruta1 = "/home/dam/Descargas/anaxa.jpeg";
-        String ruta2 = "/home/dam/Escritorio/b.jpeg";
+        String ruta1 = "C:\\Users\\sanda\\Desktop\\Ricardo.jfif";
+        String ruta2 = "C:\\Users\\sanda\\Desktop\\b.jfif";
 
         copiarfoto2(ruta1, ruta2);
     }
