@@ -33,7 +33,7 @@ public class Parte2 {
         BufferedInputStream in = new BufferedInputStream(new FileInputStream(ruta1));
         BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(ruta2));
         int caracter = 0;
-        byte[] p = new byte[8192];
+        byte[] p = new byte[in.available()];
         try {
             int bite;
             while ((bite = in.read()) != -1) {
