@@ -1,10 +1,10 @@
 package ejercicios;
 
-public class Tarea8 extends Thread{
+public class Tarea08 extends Thread{
 
     private final int nivelCabreo;
 
-    public Tarea8(String str, int a) {
+    public Tarea08(String str, int a) {
         super(str);
         this.nivelCabreo = a;
     }
@@ -18,10 +18,10 @@ public class Tarea8 extends Thread{
     }
 
     public static void main(String[] args) {
-        new Tarea8("Diego",4).start();
-        new Tarea8("Manuel", 5).start();
-        new Tarea8("Damian", 3).start();
-        new Tarea8("Araujo", 5).start();
+        new Tarea08("Diego",4).start();
+        new Tarea08("Manuel", 5).start();
+        new Tarea08("Damian", 3).start();
+        new Tarea08("Araujo", 5).start();
         System.out.println("Termina hilo principal");
     }
 }
