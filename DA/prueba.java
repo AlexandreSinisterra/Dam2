@@ -16,6 +16,7 @@ public class prueba {
         System.out.println(calculaLonxitude(rADirectorio,nombreFichero));
         System.out.println(mLectura(rADirectorio,nombreFichero));
         System.out.println(mEscritura(rADirectorio,nombreFichero));
+        mContido(rADirectorio);
         System.out.println(borrarFicheiro(rADirectorio,nombreFichero));
         System.out.println(borrarDirectorio(rADirectorio));
 
@@ -135,10 +136,9 @@ public class prueba {
     public static void mContido(String dirName) {
         File dir = new File(dirName);
 
-        if (dir.exists() && dir.isDirectory()) {
             String[] contido = dir.list();
 
-            if (contido != null && contido.length > 0) {
+            if (contido.length > 0) {
                 for (String t : contido) {
                     System.out.println(t);
                 }
@@ -146,6 +146,5 @@ public class prueba {
             } else {
                 System.out.println("No tiene contenido.");
             }
-        }
     }
 }
