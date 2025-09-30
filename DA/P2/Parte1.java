@@ -49,7 +49,6 @@ public class Parte1  {
             contenido = (contenido+"\n");
             escribirTexto(ruta2,contenido);
         } catch (IOException e) {
-            System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
         }
     }
 

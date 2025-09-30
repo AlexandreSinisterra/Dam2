@@ -3,40 +3,55 @@ import java.io.*;
 
 public class Parte3 {
     public static void main(String[] args) throws FileNotFoundException {
-        String ruta = "texto3.txt";
-        duplicarTexto(ruta);
+        String nombre = "texto3.txt";
+        String direccion = "C:\\Users\\sanda\\Desktop";
+        crearFicheiro(direccion,nombre);
+        grabarTexto(direccion,nombre);
     }
 
-    static void duplicarTexto(String ruta) throws RuntimeException {
+    public static void crearFicheiro(String dirName, String fileName) {
+        File f = new File(dirName, fileName);
+        System.out.println("");
+        try {
+            if (!f.exists()) {
+                f.createNewFile();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
-        String texto = "o tempo está xélido";
-        int nveces = 3;
+    static void grabarTexto(String direccion, String nombre) throws RuntimeException {
+        String ruta = (direccion+"\\"+nombre);
+        String frase = "o tempo está xélido";
 
         try (FileOutputStream fos = new FileOutputStream(ruta);
              DataOutputStream dos = new DataOutputStream(fos)) {
 
-            for (int i = 0; i < nveces; i++) {
-                System.out.println("Cadea: " + texto);
-                dos.writeUTF(texto);
-                System.out.println("tamaño do ficheiro: " + dos.size() + "bytes");
+            for (int i = 0; i <= 2; i++) {
+                System.out.println("Escribiendo: " + frase);
+                dos.writeUTF(frase);
+                System.out.println("tamaño del fichero: " + dos.size() + " bytes");
             }
 
-            System.out.println("Tamaño final del archivo: " + dos.size() + " bytes.");
+            System.out.println("Tamaño final del fichero: " + dos.size() + " bytes");
+            System.out.println("");
         }
         catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
         try (FileInputStream fis = new FileInputStream(ruta);
              DataInputStream dis = new DataInputStream(fis)) {
 
-            System.out.println("\n Lectura del archivo ");
-            for (int i = 0; i < nveces; i++) {
-                System.out.println("quedan: " +fis.available() + " bytes por leer");
-                String valorLeido = dis.readUTF(); // Lee la cadena de caracteres que escribimos
-                System.out.println("Cadena leída: " + valorLeido);
+            for (int i = 0; i <= 2; i++) {
+                System.out.println("quedan: " + fis.available() + " bytes por leer");
+                System.out.println("Cadena: " + dis.readUTF());
             }
 
-            System.out.println("\nXa non queda nada por ler");
+            System.out.println("Ya no queda nada por leer");
 
         }
         catch (IOException e) {

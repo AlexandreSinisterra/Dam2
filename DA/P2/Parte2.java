@@ -12,7 +12,7 @@ public class Parte2 {
         copiarfoto2(ruta1, ruta2);
     }
 
-
+/**
     public static void copiarfoto(String ruta1, String ruta2) throws IOException {
         FileInputStream in = new FileInputStream(ruta1);
         FileOutputStream out = new FileOutputStream(ruta2, true);
@@ -26,7 +26,7 @@ public class Parte2 {
         in.close();
         out.close();
     }
-
+*/
 
     public static void copiarfoto2(String ruta1, String ruta2) throws IOException {
 

@@ -39,6 +39,6 @@ public class Tarea09 extends Thread{
     }
 
     public static void main(String[] args) {
-        new Tarea09(0).start();
+        new Tarea09(7).start();
     }
 }
