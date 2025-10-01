@@ -1,4 +1,5 @@
 package ejercicios;
+import java.util.Scanner;
 
 public class Tarea11 extends Thread{
 
@@ -44,6 +45,21 @@ public class Tarea11 extends Thread{
 
 
     public static void main(String[] args) {
-        new Tarea11(5,1).start();
+
+        new Tarea11(PedirCantidad(),1).start();
+    }
+
+    public static int PedirCantidad(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("dime cuantos hilos quieres( mayor o igual que 1)");
+        int hilos = sc.nextInt();
+        sc.close();
+        if (hilos>=1){
+            System.out.println("mu bien");
+        }else{
+            System.out.println("mu mal, asignandose 5 por defecto");
+            hilos = 5;
+        }
+        return hilos;
     }
 }
