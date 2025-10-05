@@ -39,6 +39,81 @@ object MaquinadeCafe {
                 }
 
                 is EstadoMaquinaCafe.VerificandoAgua -> {
+                    interfaz.mostrarMensaje("\nComprobando agua")
+                    repeat (3) {
+                        Thread.sleep(1000)
+                        interfaz.mostrarMensaje(".")
+                    }
+                    val hayagua = true
+                    if (hayagua){
+                        interfaz.mostrarMensaje("\nagua correcto\n")
+                        estadoactual = EstadoMaquinaCafe.VerificandoAzucar
+                    }else{
+                        estadoactual = EstadoMaquinaCafe.Error("\nNo queda agua\n")
+                    }
+                }
+
+                is EstadoMaquinaCafe.VerificandoAzucar -> {
+                    interfaz.mostrarMensaje("\nComprobando Azucar")
+                    repeat (3) {
+                        Thread.sleep(1000)
+                        interfaz.mostrarMensaje(".")
+                    }
+                    val hayAzucar = true
+                    if (hayAzucar){
+                        interfaz.mostrarMensaje("\nAzucar correcto\n")
+                        estadoactual = EstadoMaquinaCafe.VerificandoLeche
+                    }else{
+                        estadoactual = EstadoMaquinaCafe.Error("\nNo queda Azucar\n")
+                    }
+                }
+
+                is EstadoMaquinaCafe.VerificandoLeche -> {
+                    interfaz.mostrarMensaje("\nComprobando Leche")
+                    repeat (3) {
+                        Thread.sleep(1000)
+                        interfaz.mostrarMensaje(".")
+                    }
+                    val hayLeche = true
+                    if (hayLeche){
+                        interfaz.mostrarMensaje("\nLeche correcto\n")
+                        estadoactual = EstadoMaquinaCafe.VerificandoVaso
+                    }else{
+                        estadoactual = EstadoMaquinaCafe.Error("\nNo queda Leche\n")
+                    }
+                }
+
+                is EstadoMaquinaCafe.VerificandoVaso -> {
+                    interfaz.mostrarMensaje("\nComprobando Vaso")
+                    repeat (3) {
+                        Thread.sleep(1000)
+                        interfaz.mostrarMensaje(".")
+                    }
+                    val hayVaso = true
+                    if (hayVaso){
+                        interfaz.mostrarMensaje("\nVaso correcto\n")
+                        estadoactual = EstadoMaquinaCafe.VerificandoPalito
+                    }else{
+                        estadoactual = EstadoMaquinaCafe.Error("\nNo queda Vaso\n")
+                    }
+                }
+
+                is EstadoMaquinaCafe.VerificandoPalito -> {
+                    interfaz.mostrarMensaje("\nComprobando Palito")
+                    repeat (3) {
+                        Thread.sleep(1000)
+                        interfaz.mostrarMensaje(".")
+                    }
+                    val hayPalito = true
+                    if (hayPalito){
+                        interfaz.mostrarMensaje("\nPalito correcto\n")
+                        estadoactual = EstadoMaquinaCafe.PidiendoTarjeta
+                    }else{
+                        estadoactual = EstadoMaquinaCafe.Error("\nNo queda Palito\n")
+                    }
+                }
+
+                is EstadoMaquinaCafe.PidiendoTarjeta ->{
 
                 }
 
@@ -63,6 +138,11 @@ object MaquinadeCafe {
         object VerificandoEstado : EstadoMaquinaCafe()
         object VerificandoCafe : EstadoMaquinaCafe()
         object VerificandoAgua : EstadoMaquinaCafe()
+        object VerificandoAzucar : EstadoMaquinaCafe()
+        object VerificandoLeche : EstadoMaquinaCafe()
+        object VerificandoVaso : EstadoMaquinaCafe()
+        object VerificandoPalito : EstadoMaquinaCafe()
+        object PidiendoTarjeta : EstadoMaquinaCafe()
 
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()
