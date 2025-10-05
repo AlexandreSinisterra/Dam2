@@ -1,5 +1,7 @@
 package MaquinaDeCafe
 
+import MaquinaDeCafe.MaquinadeCafe.interfaz
+
 open class Interfaz {
     open fun mostrarMensaje(mensaje: String) {
         print(mensaje)
@@ -33,6 +35,17 @@ open class Interfaz {
             }
         } while (!comprobacion)
         return tipocafe
+    }
+
+    open fun pedirPago(cafe: Cafe): Int{
+        mostrarMensaje("\nEl precio del "+cafe.nombre+" es de "+cafe.precio+"\n")
+        mostrarMensaje("\nProcesando pago")
+        repeat (3) {
+            Thread.sleep(1000)
+            interfaz.mostrarMensaje(".")
+        }
+        mostrarMensaje("\nMuchas gracias por su compra\n")
+        return cafe.precio
     }
 
     open fun mostrarError(mensaje: String) {

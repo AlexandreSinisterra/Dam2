@@ -9,6 +9,7 @@ fun main() {
 object MaquinadeCafe {
     var estadoactual: EstadoMaquinaCafe = EstadoMaquinaCafe.Idle
     var interfaz = Interfaz()
+    var dineroAcumulado = 0
     var agua = 1000
     var cafe = 500
     var azucar = 300
@@ -127,6 +128,7 @@ object MaquinadeCafe {
 
                 is EstadoMaquinaCafe.PidiendoTarjeta ->{
                     val claseCafe = (estadoactual as EstadoMaquinaCafe.PidiendoTarjeta).c
+                    dineroAcumulado += interfaz.pedirPago(claseCafe)
                     //implementar pago por interfaz y demas clases
                 }
 
