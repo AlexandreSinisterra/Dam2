@@ -132,8 +132,14 @@ object MaquinadeCafe {
 
 
                 is EstadoMaquinaCafe.Limpiando -> {
-                    interfaz.mostrarMensaje("Limpiando la máquina...")
+                    interfaz.mostrarMensaje("Reponiendo maquina...")
                     Thread.sleep(500)
+                    agua = 1000
+                    cafe = 500
+                    azucar = 300
+                    leche = 500
+                    vasos = 10
+                    palitos = 10
                     estadoactual = EstadoMaquinaCafe.Idle
                 }
                 is EstadoMaquinaCafe.Error -> {
