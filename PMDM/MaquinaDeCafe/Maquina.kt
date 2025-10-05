@@ -115,7 +115,13 @@ object MaquinadeCafe {
 
                 is EstadoMaquinaCafe.PidiendoCafe ->{
                     interfaz.mostrarMensaje("\nTodo correcto\n")
-                    interfaz.pedirTipoCafe()
+                    val claseCafe = interfaz.pedirTipoCafe()
+                    estadoactual = EstadoMaquinaCafe.PidiendoTarjeta(claseCafe)
+                }
+
+                is EstadoMaquinaCafe.PidiendoTarjeta ->{
+                    val claseCafe = (estadoactual as EstadoMaquinaCafe.PidiendoTarjeta).c
+                    val precioCafe = interfaz.pedirTipoCafe()
                 }
 
 
@@ -144,6 +150,7 @@ object MaquinadeCafe {
         object VerificandoVaso : EstadoMaquinaCafe()
         object VerificandoPalito : EstadoMaquinaCafe()
         object PidiendoCafe : EstadoMaquinaCafe()
+        data class PidiendoTarjeta(val c: String) : EstadoMaquinaCafe()
 
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()
