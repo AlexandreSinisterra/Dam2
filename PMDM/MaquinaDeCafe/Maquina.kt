@@ -17,21 +17,30 @@ object MaquinadeCafe {
                     interfaz.mostrarMensaje("\nEmpezando examen de la máquina\n")
                     estadoactual = EstadoMaquinaCafe.VerificandoEstado
                 }
+
                 is EstadoMaquinaCafe.VerificandoEstado -> {
                     interfaz.mostrarMensaje("\nProcediendo a verificar los elementos\n")
                     estadoactual = EstadoMaquinaCafe.VerificandoCafe
                 }
+
                 is EstadoMaquinaCafe.VerificandoCafe -> {
-                    interfaz.mostrarMensaje("\nComprobando Café\n")
+                    interfaz.mostrarMensaje("\nComprobando Café")
                     repeat (3) {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-
-
-                    estadoactual = EstadoMaquinaCafe.VerificandoCafe
+                    val hayCafe = true
+                    if (hayCafe){
+                        interfaz.mostrarMensaje("\nCafé correcto\n")
+                        estadoactual = EstadoMaquinaCafe.VerificandoAgua
+                    }else{
+                        estadoactual = EstadoMaquinaCafe.Error("\nNo queda cafe\n")
+                    }
                 }
 
+                is EstadoMaquinaCafe.VerificandoAgua -> {
+
+                }
 
 
                 is EstadoMaquinaCafe.Limpiando -> {
@@ -53,6 +62,7 @@ object MaquinadeCafe {
         object Idle : EstadoMaquinaCafe()
         object VerificandoEstado : EstadoMaquinaCafe()
         object VerificandoCafe : EstadoMaquinaCafe()
+        object VerificandoAgua : EstadoMaquinaCafe()
 
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()

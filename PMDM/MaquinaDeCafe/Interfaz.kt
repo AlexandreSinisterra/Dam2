@@ -2,7 +2,7 @@ package MaquinaDeCafe
 
 open class Interfaz {
     open fun mostrarMensaje(mensaje: String) {
-        println(mensaje)
+        print(mensaje)
     }
 
     open fun pedirTipoCafe(): String {
