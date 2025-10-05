@@ -11,5 +11,5 @@ abstract class Cafe(
 )
 
 class Americano : Cafe("Americano", 200, 15, 5, 0)
-class Africano : Cafe("Africano", 150, 20, 7, 10)
+class Africano : Cafe("Africano", 0, 20, 7, 10)
 class Capuchino : Cafe("Capuchino", 100, 15, 5, 50)

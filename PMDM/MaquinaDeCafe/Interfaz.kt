@@ -5,10 +5,12 @@ open class Interfaz {
         print(mensaje)
     }
 
-    open fun pedirTipoCafe(): String {
-        var tipocafe = "a"
+    open fun pedirTipoCafe(): Cafe {
+        var tipocafe: Cafe = Americano()
+        var comprobacion: Boolean
+
         do {
-            var comprobacion = true
+            comprobacion = true
             mostrarMensaje("\nCafes disponibles:\n ")
             mostrarMensaje("\n1-Americano \n")
             mostrarMensaje("\n2-Africano \n")
@@ -17,15 +19,17 @@ open class Interfaz {
             var tipo = readLine()?.toInt()
             when (tipo) {
                 1 -> {mostrarMensaje("\nPerfecta eleccion\n")
-                    tipocafe = "americano"
+                    tipocafe = Americano()
                 }
                 2 -> {mostrarMensaje("\nPerfecta eleccion\n")
-                    tipocafe = "Africano"
+                    tipocafe = Africano()
                 }
                 3 -> {mostrarMensaje("\nPerfecta eleccion\n")
-                    tipocafe = "capuchino"
+                    tipocafe = Capuchino()
                 }
-                else -> comprobacion = false
+                else -> {comprobacion = false
+                    mostrarError("\nPor favor introdruzca un numero valido\n")
+                }
             }
         } while (!comprobacion)
         return tipocafe

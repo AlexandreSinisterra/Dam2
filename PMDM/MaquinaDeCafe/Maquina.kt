@@ -9,6 +9,12 @@ fun main() {
 object MaquinadeCafe {
     var estadoactual: EstadoMaquinaCafe = EstadoMaquinaCafe.Idle
     var interfaz = Interfaz()
+    var agua = 1000
+    var cafe = 500
+    var azucar = 300
+    var leche = 500
+    var vasos = 10
+    var palitos = 10
 
     fun iniciar() {
         while (true) {
@@ -150,7 +156,7 @@ object MaquinadeCafe {
         object VerificandoVaso : EstadoMaquinaCafe()
         object VerificandoPalito : EstadoMaquinaCafe()
         object PidiendoCafe : EstadoMaquinaCafe()
-        data class PidiendoTarjeta(val c: String) : EstadoMaquinaCafe()
+        data class PidiendoTarjeta(val c: Cafe) : EstadoMaquinaCafe()
 
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()
