@@ -135,7 +135,29 @@ object MaquinadeCafe {
                 is EstadoMaquinaCafe.PidiendoAzucar ->{
                     val claseCafe = (estadoactual as EstadoMaquinaCafe.PidiendoAzucar).c
                     claseCafe.azucar = interfaz.pedirAzucar(claseCafe)
+                    estadoactual = EstadoMaquinaCafe.HaciendoCafe(claseCafe)
+                }
 
+                is EstadoMaquinaCafe.HaciendoCafe ->{
+                    val claseCafe = (estadoactual as EstadoMaquinaCafe.HaciendoCafe).c
+                    interfaz.mostrarMensaje("\nEmpezando a hacer el"+claseCafe.nombre+", espere un momento")
+                    repeat (3) {
+                        Thread.sleep(1000)
+                        interfaz.mostrarMensaje(".")
+                    }
+                    interfaz.mostrarMensaje("\nEl "+claseCafe.nombre+" está servido, que lo disfrute ^^\n")
+                    estadoactual = EstadoMaquinaCafe.CalculandoRecursos(claseCafe)
+                }
+
+                is EstadoMaquinaCafe.CalculandoRecursos ->{
+                    val claseCafe = (estadoactual as EstadoMaquinaCafe.CalculandoRecursos).c
+                    agua -= claseCafe.aguaNecesaria
+                    cafe -= claseCafe.cafeNecesario
+                    azucar -= claseCafe.azucar
+                    leche -= claseCafe.lecheNecesaria
+                    vasos = vasos -1
+                    palitos = palitos -1
+                    estadoactual = EstadoMaquinaCafe.Idle
                 }
 
                 is EstadoMaquinaCafe.Limpiando -> {
@@ -171,6 +193,8 @@ object MaquinadeCafe {
         object PidiendoCafe : EstadoMaquinaCafe()
         data class PidiendoTarjeta(val c: Cafe) : EstadoMaquinaCafe()
         data class PidiendoAzucar(val c: Cafe) : EstadoMaquinaCafe()
+        data class HaciendoCafe(val c: Cafe) : EstadoMaquinaCafe()
+        data class CalculandoRecursos(val c: Cafe) : EstadoMaquinaCafe()
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()
     }

@@ -7,8 +7,6 @@ abstract class Cafe(
     val lecheNecesaria: Int,
     val precio: Int,
     var azucar: Int = 0,
-    val vasoNecesario: Int = 1,
-    val palitoNecesario: Int = 1
 )
 
 class Americano : Cafe("Americano", 200, 15, 0, 2)
