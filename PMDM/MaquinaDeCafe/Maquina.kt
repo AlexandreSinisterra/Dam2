@@ -107,14 +107,15 @@ object MaquinadeCafe {
                     val hayPalito = true
                     if (hayPalito){
                         interfaz.mostrarMensaje("\nPalito correcto\n")
-                        estadoactual = EstadoMaquinaCafe.PidiendoTarjeta
+                        estadoactual = EstadoMaquinaCafe.PidiendoCafe
                     }else{
                         estadoactual = EstadoMaquinaCafe.Error("\nNo queda Palito\n")
                     }
                 }
 
-                is EstadoMaquinaCafe.PidiendoTarjeta ->{
-
+                is EstadoMaquinaCafe.PidiendoCafe ->{
+                    interfaz.mostrarMensaje("\nTodo correcto\n")
+                    interfaz.pedirTipoCafe()
                 }
 
 
@@ -142,7 +143,7 @@ object MaquinadeCafe {
         object VerificandoLeche : EstadoMaquinaCafe()
         object VerificandoVaso : EstadoMaquinaCafe()
         object VerificandoPalito : EstadoMaquinaCafe()
-        object PidiendoTarjeta : EstadoMaquinaCafe()
+        object PidiendoCafe : EstadoMaquinaCafe()
 
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()

@@ -6,16 +6,29 @@ open class Interfaz {
     }
 
     open fun pedirTipoCafe(): String {
-        val cafesValidos = listOf("solo", "leche", "capuchino")
-        var tipo: String?
+        var tipocafe = "a"
         do {
-            mostrarMensaje("¿Qué café deseas? (solo, leche, capuchino): ")
-            tipo = readLine()?.lowercase()
-            if (tipo !in cafesValidos) {
-                mostrarError("Tipo de café no válido.")
+            var comprobacion = true
+            mostrarMensaje("\nCafes disponibles:\n ")
+            mostrarMensaje("\n1-Americano \n")
+            mostrarMensaje("\n2-Africano \n")
+            mostrarMensaje("\n3-capuchino \n")
+
+            var tipo = readLine()?.toInt()
+            when (tipo) {
+                1 -> {mostrarMensaje("\nPerfecta eleccion\n")
+                    tipocafe = "americano"
+                }
+                2 -> {mostrarMensaje("\nPerfecta eleccion\n")
+                    tipocafe = "Africano"
+                }
+                3 -> {mostrarMensaje("\nPerfecta eleccion\n")
+                    tipocafe = "capuchino"
+                }
+                else -> comprobacion = false
             }
-        } while (tipo !in cafesValidos)
-        return tipo!!
+        } while (!comprobacion)
+        return tipocafe
     }
 
     open fun mostrarError(mensaje: String) {
