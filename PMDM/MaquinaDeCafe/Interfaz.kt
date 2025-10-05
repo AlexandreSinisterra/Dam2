@@ -48,6 +48,22 @@ open class Interfaz {
         return cafe.precio
     }
 
+    open fun pedirAzucar(cafe: Cafe): Int{
+        var cantidad = 0
+        var comprobacion: Boolean
+        do {
+            comprobacion = true
+            mostrarMensaje("\nCuanto azucar quieres?\n")
+            mostrarMensaje("\nEscribe un numero del 1 al 10 \n")
+            var cantidad = readLine()?.toInt()
+            if ((cantidad!! >11) or (cantidad < 0)){
+                comprobacion = false
+            }
+        } while (!comprobacion)
+        mostrarMensaje("\nDe acuerdo\n")
+        return cantidad
+    }
+
     open fun mostrarError(mensaje: String) {
         mostrarMensaje("ERROR: $mensaje")
     }

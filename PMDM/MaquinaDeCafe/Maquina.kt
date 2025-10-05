@@ -129,9 +129,14 @@ object MaquinadeCafe {
                 is EstadoMaquinaCafe.PidiendoTarjeta ->{
                     val claseCafe = (estadoactual as EstadoMaquinaCafe.PidiendoTarjeta).c
                     dineroAcumulado += interfaz.pedirPago(claseCafe)
-                    //implementar pago por interfaz y demas clases
+                    estadoactual = EstadoMaquinaCafe.PidiendoAzucar(claseCafe)
                 }
 
+                is EstadoMaquinaCafe.PidiendoAzucar ->{
+                    val claseCafe = (estadoactual as EstadoMaquinaCafe.PidiendoAzucar).c
+                    claseCafe.azucar = interfaz.pedirAzucar(claseCafe)
+
+                }
 
                 is EstadoMaquinaCafe.Limpiando -> {
                     interfaz.mostrarMensaje("Reponiendo maquina...")
@@ -165,7 +170,7 @@ object MaquinadeCafe {
         object VerificandoPalito : EstadoMaquinaCafe()
         object PidiendoCafe : EstadoMaquinaCafe()
         data class PidiendoTarjeta(val c: Cafe) : EstadoMaquinaCafe()
-
+        data class PidiendoAzucar(val c: Cafe) : EstadoMaquinaCafe()
         object Limpiando : EstadoMaquinaCafe()
         data class Error(val message: String) : EstadoMaquinaCafe()
     }
