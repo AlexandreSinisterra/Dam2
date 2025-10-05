@@ -1,8 +1,5 @@
 package MaquinaDeCafe
 
-import MaquinaDeCafe.MaquinadeCafe.EstadoMaquinaCafe
-import MaquinaDeCafe.MaquinadeCafe.interfaz
-
 fun main() {
     MaquinadeCafe.iniciar()
 }
@@ -36,7 +33,9 @@ object MaquinadeCafe {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-                    val hayCafe = true
+                    var hayCafe = true
+                    if (cafe<20) hayCafe=false
+
                     if (hayCafe){
                         interfaz.mostrarMensaje("\nCafé correcto\n")
                         estadoactual = EstadoMaquinaCafe.VerificandoAgua
@@ -51,7 +50,9 @@ object MaquinadeCafe {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-                    val hayagua = true
+                    var hayagua = true
+                    if (agua<200) hayagua=false
+
                     if (hayagua){
                         interfaz.mostrarMensaje("\nagua correcto\n")
                         estadoactual = EstadoMaquinaCafe.VerificandoAzucar
@@ -66,7 +67,9 @@ object MaquinadeCafe {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-                    val hayAzucar = true
+                    var hayAzucar = true
+                    if (azucar<10) hayAzucar=false
+
                     if (hayAzucar){
                         interfaz.mostrarMensaje("\nAzucar correcto\n")
                         estadoactual = EstadoMaquinaCafe.VerificandoLeche
@@ -81,7 +84,9 @@ object MaquinadeCafe {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-                    val hayLeche = true
+                    var hayLeche = true
+                    if (leche<50) hayLeche=false
+
                     if (hayLeche){
                         interfaz.mostrarMensaje("\nLeche correcto\n")
                         estadoactual = EstadoMaquinaCafe.VerificandoVaso
@@ -96,7 +101,8 @@ object MaquinadeCafe {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-                    val hayVaso = true
+                    var hayVaso = true
+                    if (vasos<1) hayVaso=false
                     if (hayVaso){
                         interfaz.mostrarMensaje("\nVaso correcto\n")
                         estadoactual = EstadoMaquinaCafe.VerificandoPalito
@@ -111,7 +117,8 @@ object MaquinadeCafe {
                         Thread.sleep(1000)
                         interfaz.mostrarMensaje(".")
                     }
-                    val hayPalito = true
+                    var hayPalito = true
+                    if (palitos<1) hayPalito=false
                     if (hayPalito){
                         interfaz.mostrarMensaje("\nPalito correcto\n")
                         estadoactual = EstadoMaquinaCafe.PidiendoCafe
