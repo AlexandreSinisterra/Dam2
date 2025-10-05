@@ -127,7 +127,7 @@ object MaquinadeCafe {
 
                 is EstadoMaquinaCafe.PidiendoTarjeta ->{
                     val claseCafe = (estadoactual as EstadoMaquinaCafe.PidiendoTarjeta).c
-                    val precioCafe = interfaz.pedirTipoCafe()
+                    //implementar pago por interfaz y demas clases
                 }
 
 
