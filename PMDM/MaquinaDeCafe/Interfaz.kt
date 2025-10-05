@@ -18,17 +18,7 @@ open class Interfaz {
         return tipo!!
     }
 
-    open fun pedirAzucar(): Boolean {
-        mostrarMensaje("¿Quieres azúcar? (s|si / n|no): ")
-        val respuesta = readLine()?.lowercase()
-        return respuesta == "s" || respuesta == "si"
-    }
-
     open fun mostrarError(mensaje: String) {
         mostrarMensaje("ERROR: $mensaje")
-    }
-
-    open fun pedirOrden(): Boolean {
-        TODO("Not yet implemented")
     }
 }
