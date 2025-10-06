@@ -12,12 +12,11 @@ comprobamos la descarga con docker images
 
 ![img_3.png](img_3.png)
 
-4. Para comprobar la ip escribimos ip a, y para el ping se escribe ping -c 4 google.com, lo normal es hacer ping 4 veces, por eso el 4.
+4. Para comprobar la ip escribimos ip a, y buscamos el apartado donde pone eth0@if5, y para el ping se escribe ping -c 4 google.com, lo normal es hacer ping 4 veces, por eso el 4.
 
 ![img_4.png](img_4.png)
 
-5. Ahora combinamos el apartado 3 y el 4, creando el contenedor dam_alp2, los comandos son los mismos.
+5. Ahora creamos el contenedor dam_alp2 e intentamos hacer ping entre ellos con ping -c 4 (y la ip del otro contenedor)
 
-![img_5.png](img_5.png)
-
+![img_6.png](img_6.png)
 6.
