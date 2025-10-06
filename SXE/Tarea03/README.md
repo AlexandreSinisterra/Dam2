@@ -16,4 +16,8 @@ comprobamos la descarga con docker images
 
 ![img_4.png](img_4.png)
 
-5.
+5. Ahora combinamos el apartado 3 y el 4, creando el contenedor dam_alp2, los comandos son los mismos.
+
+![img_5.png](img_5.png)
+
+6.
