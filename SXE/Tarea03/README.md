@@ -19,4 +19,9 @@ comprobamos la descarga con docker images
 5. Ahora creamos el contenedor dam_alp2 e intentamos hacer ping entre ellos con ping -c 4 (y la ip del otro contenedor)
 
 ![img_6.png](img_6.png)
-6.
+
+6. Al salir podemos ver con docker ps -a que pone cuando saliste de cada contenedor
+
+![img_7.png](img_7.png)
+
+7.
