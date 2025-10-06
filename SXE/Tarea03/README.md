@@ -8,4 +8,8 @@ comprobamos la descarga con docker images
 
 ![img_2.png](img_2.png)
 
-3.
+3. Para crear un contenedor con el nombre dam_alp1 y acceder a el, tienes q escribir docker run -it --name (aqui el nombre sin parentesis) alpine. Cuando lo crees entrarás automaticamente a él, para salir puedes escribir exit.
+
+![img_3.png](img_3.png)
+
+4.
