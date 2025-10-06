@@ -1,9 +1,32 @@
 package MaquinaDeCafe
 
+/**
+ * Punto de entrada principal del programa.
+ *
+ * Llama a la función [MaquinadeCafe.iniciar] para comenzar
+ * la simulación de la máquina de café.
+ */
 fun main() {
     MaquinadeCafe.iniciar()
 }
-//esta es nuestra maquina de cafre
+/**
+ * Representa la máquina de café automática.
+ *
+ * Este objeto gestiona el ciclo de vida de la máquina, sus estados
+ * y los recursos disponibles (agua, café, leche, azúcar, vasos y palitos).
+ *
+ * La máquina funciona mediante un bucle infinito en el que va cambiando de estado
+ * de acuerdo con el flujo definido en [EstadoMaquinaCafe].
+ *
+ * Recursos gestionados:
+ * - [agua] en mililitros
+ * - [cafe] en gramos
+ * - [azucar] en gramos
+ * - [leche] en mililitros
+ * - [vasos] en unidades
+ * - [palitos] en unidades
+ * - [dineroAcumulado] dinero total recaudado
+ */
 object MaquinadeCafe {
     var estadoactual: EstadoMaquinaCafe = EstadoMaquinaCafe.Idle // tenemos que asignarle un estado base
     var interfaz = Interfaz() //vinculamos la clase interfaz
@@ -18,7 +41,15 @@ object MaquinadeCafe {
     var leche = 500
     var vasos = 10
     var palitos = 10
-
+    /**
+     * Inicia la ejecución de la máquina de café.
+     *
+     * Mediante un bucle infinito, la máquina evalúa su [estadoactual]
+     * y ejecuta las acciones correspondientes (verificación de recursos,
+     * pedido de café, cobro, preparación y reposición).
+     *
+     * El flujo se gestiona utilizando la clase sellada [EstadoMaquinaCafe].
+     */
     fun iniciar() {
         while (true) {//while true ya que queremos que siempre se esté ejecutando
 
