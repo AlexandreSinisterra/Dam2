@@ -1,11 +1,30 @@
 package MaquinaDeCafe
-
-open class Interfaz {//funcion para mostrar mensajes
+/**
+ * Clase que representa la interfaz de usuario de la máquina de café.
+ *
+ * Se encarga de mostrar mensajes por consola, solicitar interacciones
+ * al usuario y validar las entradas recibidas.
+ *
+ * Todas las funciones están definidas como open para permitir su extensión
+ */
+open class Interfaz {
+    /**
+     * Muestra un mensaje por consola.
+     *
+     * @param mensaje Texto que se imprimirá en la consola.
+     */
     open fun mostrarMensaje(mensaje: String) {
         print(mensaje)
     }
-
-    open fun pedirTipoCafe(): Cafe {//funcion para pedir el cafe
+    /**
+     * Solicita al usuario que elija un tipo de café.
+     *
+     * Presenta un menú de opciones y valida la entrada.
+     * El proceso se repetirá hasta que se ingrese una opción válida.
+     *
+     * @return Una instancia de la clase [Cafe] correspondiente al tipo seleccionado.
+     */
+    open fun pedirTipoCafe(): Cafe {
         var tipocafe: Cafe = Americano()
         var comprobacion: Boolean
 
@@ -34,8 +53,16 @@ open class Interfaz {//funcion para mostrar mensajes
         } while (!comprobacion)//hasta que no se de un numero valido seguira preguntando
         return tipocafe//devuelve la clase Cafe
     }
-
-    open fun pedirPago(cafe: Cafe): Int{//simula un pedido de pago
+    /**
+     * Simula el proceso de pago de un café.
+     *
+     * Muestra el precio, procesa el pago con una pequeña espera
+     * (simulada con `Thread.sleep`) y confirma la transacción.
+     *
+     * @param cafe Objeto [Cafe] del que se extrae el precio.
+     * @return El precio del café pagado.
+     */
+    open fun pedirPago(cafe: Cafe): Int{
         mostrarMensaje("\nEl precio del "+cafe.nombre+" es de "+cafe.precio+"\n")
         mostrarMensaje("\nProcesando pago")
         repeat (3) {
@@ -45,7 +72,15 @@ open class Interfaz {//funcion para mostrar mensajes
         mostrarMensaje("\nMuchas gracias por su compra\n")
         return cafe.precio
     }
-
+    /**
+     * Solicita al usuario la cantidad de azúcar deseada para el café.
+     *
+     * El valor debe estar entre 1 y 10. En caso de introducir un número inválido,
+     * se volverá a preguntar hasta que la entrada sea correcta.
+     *
+     * @param cafe Objeto [Cafe] al que se añadirá la cantidad de azúcar.
+     * @return La cantidad de azúcar seleccionada.
+     */
     open fun pedirAzucar(cafe: Cafe): Int{//pide la cantidad deseada de azucar
         var cantidad: Int = 0
         var comprobacion: Boolean
@@ -66,7 +101,11 @@ open class Interfaz {//funcion para mostrar mensajes
         mostrarMensaje("\nDe acuerdo\n")
         return cantidad//devuelve la cantidad de azucar
     }
-
+    /**
+     * Muestra un mensaje de error en la consola.
+     *
+     * @param mensaje Texto del error.
+     */
     open fun mostrarError(mensaje: String) {
         mostrarMensaje("ERROR: $mensaje")//funciona como el mostrar mensaje
     }
