@@ -1,37 +1,155 @@
-1. Para descargar alpine sin arrancarlo utilizamos docker pull alpine
+# Guía: Uso básico de Alpine en Docker
 
-comprobamos la descarga con docker images
+---
+
+## 1. Descargar Alpine sin arrancarlo
+
+Para descargar la imagen de Alpine:
+
+```bash
+docker pull alpine
+```
+
+Comprobamos la descarga con:
+
+```bash
+docker images
+```
+
 ![img.png](img.png)
 
+---
 
-2. Para crear un contenedor sin nombre utilizamos docker create alpine(con una sola vez sirve, yo lo hice 2 sin querer), con docker ps mostramos los contenedores en ejecucion, con ps -a se ven todos los creados.
+## 2. Crear un contenedor sin nombre
 
-![img_2.png](img_2.png)
+Para crear un contenedor **sin nombre**:
 
-3. Para crear un contenedor con el nombre dam_alp1 y acceder a el, tienes q escribir docker run -it --name (aqui el nombre sin parentesis) alpine. Cuando lo crees entrarás automaticamente a él, para salir puedes escribir exit.
+```bash
+docker create alpine
+```
 
-![img_3.png](img_3.png)
+*(Con una sola vez es suficiente; en el ejemplo se hizo dos veces por error.)*
 
-4. Para comprobar la ip escribimos ip a, y buscamos el apartado donde pone eth0@if5, y para el ping se escribe ping -c 4 google.com, lo normal es hacer ping 4 veces, por eso el 4.
+Con el siguiente comando vemos los contenedores en ejecución:
 
-![img_4.png](img_4.png)
+```bash
+docker ps
+```
 
-5. Ahora creamos el contenedor dam_alp2 e intentamos hacer ping entre ellos con ping -c 4 (y la ip del otro contenedor)
+Y con este vemos **todos los contenedores creados**:
 
-![img_6.png](img_6.png)
+```bash
+docker ps -a
+```
 
-6. Al salir podemos ver con docker ps -a que pone cuando saliste de cada contenedor
+![img\_2.png](img_2.png)
 
-![img_7.png](img_7.png)
+---
 
-7. Para mirar la cantidad de memoria ocupada en el disco simplemente escribes docker system df
+## 3. Crear un contenedor con nombre y acceder a él
 
-![img_8.png](img_8.png)
+Para crear un contenedor llamado `dam_alp1` y entrar directamente en él:
 
-8. Para mirar cuanta ram ocupan tienes que escribir docker stats, pero ojo, solo ocupan si estan corriendo, asique para esto necesitamos correrlos antes con docker start (y los nombres), como puedes observar cuando hacemos ps -a se ve como cambio el status y de hecho podemos escribir simplemente docker ps.
+```bash
+docker run -it --name dam_alp1 alpine
+```
 
-![img_9.png](img_9.png)
+Entrarás automáticamente al contenedor.
+Para salir, escribe:
 
-![img_10.png](img_10.png)
+```bash
+exit
+```
 
-![img_11.png](img_11.png)
+![img\_3.png](img_3.png)
+
+---
+
+## 4. Comprobar la IP y hacer ping
+
+Dentro del contenedor, para ver la IP:
+
+```bash
+ip a
+```
+
+Busca el apartado donde pone `eth0@if5`.
+
+Para hacer un ping a Google (4 porque son los que se suelen hacer):
+
+```bash
+ping -c 4 google.com
+```
+
+![img\_4.png](img_4.png)
+
+---
+
+## 5. Comunicación entre contenedores
+
+Creamos el segundo contenedor:
+
+```bash
+docker run -dit --name dam_alp2 alpine
+```
+
+Después, intentamos hacer ping desde uno al otro con:
+
+```bash
+ping -c 4 <IP_DEL_OTRO_CONTENEDOR>
+```
+
+![img\_6.png](img_6.png)
+
+---
+
+## 6. Ver el estado de los contenedores
+
+Al salir de los contenedores, podemos comprobar su estado con:
+
+```bash
+docker ps -a
+```
+
+Se puede ver como cambiaron y nos indican hace cuanto tiempo hemos salido
+
+![img\_7.png](img_7.png)
+
+---
+
+## 7. Ver espacio ocupado en disco
+
+Para comprobar el espacio en disco usado por las imágenes y contenedores:
+
+```bash
+docker system df
+```
+
+![img\_8.png](img_8.png)
+
+---
+
+## 8. Ver uso de memoria RAM
+
+Para ver cuánta RAM están utilizando los contenedores:
+
+```bash
+docker stats
+```
+
+⚠️ **Importante:** solo verás resultados si los contenedores están en ejecución.
+Si están detenidos, primero inícialos con:
+
+```bash
+docker start dam_alp1 dam_alp2
+```
+
+Luego puedes comprobar con:
+
+```bash
+docker ps
+```
+
+![img\_9.png](img_9.png)
+![img\_10.png](img_10.png)
+![img\_11.png](img_11.png)
