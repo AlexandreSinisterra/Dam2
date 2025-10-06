@@ -24,4 +24,6 @@ comprobamos la descarga con docker images
 
 ![img_7.png](img_7.png)
 
-7.
+7. Para mirar la cantidad de memoria ocupada en el disco simplemente escribes docker system df
+
+![img_8.png](img_8.png)
