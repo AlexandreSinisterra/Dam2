@@ -27,3 +27,11 @@ comprobamos la descarga con docker images
 7. Para mirar la cantidad de memoria ocupada en el disco simplemente escribes docker system df
 
 ![img_8.png](img_8.png)
+
+8. Para mirar cuanta ram ocupan tienes que escribir docker stats, pero ojo, solo ocupan si estan corriendo, asique para esto necesitamos correrlos antes con docker start (y los nombres), como puedes observar cuando hacemos ps -a se ve como cambio el status y de hecho podemos escribir simplemente docker ps.
+
+![img_9.png](img_9.png)
+
+![img_10.png](img_10.png)
+
+![img_11.png](img_11.png)
