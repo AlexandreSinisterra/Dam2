@@ -73,7 +73,7 @@ public class P2_1_CBD {
     }
 
     public static void select2(Connection prueba1) throws SQLException {
-        String sql = "select * from anime where puntuacion = '100'";
+        String sql = "select * from anime where puntuacion = 100";
         ResultSet salida = prueba1.createStatement().executeQuery(sql);
         while (salida.next()){
             System.out.println("Nome: " + salida.getString("nome"));
