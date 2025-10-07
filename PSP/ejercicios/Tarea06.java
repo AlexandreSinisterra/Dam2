@@ -31,7 +31,7 @@ public class Tarea06 {
 
     static class Lanzador{
         public void inicializar(String ipHost) throws IOException, InterruptedException {
-            ProcessBuilder pb = new ProcessBuilder("ping","-n","7",ipHost);
+            ProcessBuilder pb = new ProcessBuilder("ping","-n","4",ipHost);
             pb.inheritIO();
             Process p = pb.start();
             int exitcode =  p.waitFor();
