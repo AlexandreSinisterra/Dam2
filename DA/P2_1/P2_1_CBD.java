@@ -40,7 +40,5 @@ public class P2_1_CBD {
                 "('Akira', 'Película postapocalíptica con acción e crítica social ambientada nunha Tokio futurista.', '1988-07-16', 90)," +
                 "('Dragon Ball', 'Serie clásica de aventuras e artes marciais con personaxes icónicos e épicos combates.', '1986-02-26', 88);";
         prueba1.createStatement().execute(sql);
-
     }
-
 }
