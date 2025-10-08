@@ -28,30 +28,10 @@ public class Tarea11 extends Thread{
 
         }
 
-        if (numero == 1){
-
-            long inicio = System.currentTimeMillis();
-
-            while(nuevohilo.isAlive()) {
-                System.out.println("[Control Central] Vigilando a Hilo-1... sigue activo.");
-                try {
-                    Thread.sleep(9);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-                System.out.println("[Control Central] Hilo-1 ha terminado.");
-                long fin = System.currentTimeMillis();
-                long tiempo = fin - inicio;
-                System.out.println("Tiempo total de la caída: "+ tiempo +"ms");
-
-        }else {
-
             for (int i = 1; i < 6; i++) {
-                System.out.println("[HILO-" + (numero - 1) + "] Itineracion " + i);
+                System.out.println("[HILO-" + numero + "] Itineracion " + i);
                 try {
-                    Thread.sleep((long) (Math.random() * 6 + 1));
+                    Thread.sleep((long) (Math.random() * 500 + 100));
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -66,29 +46,56 @@ public class Tarea11 extends Thread{
                 }
 
             }
-            System.out.println("Acabó hilo Hilo-" + (numero - 1));
-        }
+            System.out.println("Acabó hilo Hilo-" + numero);
     }
 
 
     public static void main(String[] args) {
-        new Tarea11(PedirCantidad(),1).start();
+        Thread nuevohilo = null;
+
+        Tarea11 ayuda = new Tarea11(PedirCantidad(), 1);
+        nuevohilo = new Thread(ayuda);
+        nuevohilo.start();
+
+        long inicio = System.currentTimeMillis();
+
+        while(nuevohilo.isAlive()) {
+            System.out.println("[Control Central] Vigilando a Hilo-1... sigue activo.");
+            try {
+                Thread.sleep(900);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        System.out.println("[Control Central] Hilo-1 ha terminado.");
+        long fin = System.currentTimeMillis();
+        long tiempo = fin - inicio;
+        System.out.println("Tiempo total de la caída: "+ tiempo +"ms");
     }
 
-    public static int PedirCantidad(){
+    public static int PedirCantidad() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("dime cuantos hilos quieres( mayor o igual que 1)");
+        String str;
+        int hilos;
+        try {
+            str = sc.nextLine();
+            hilos = Integer.parseInt(str);
+            sc.close();
 
-        int hilos = sc.nextInt()+1;
-        sc.close();
-
-        if (hilos>=1){
-            System.out.println("mu bien");
-        }else{
+            if (hilos >= 1) {
+                System.out.println("mu bien");
+            } else {
+                System.out.println("mu mal, asignandose 5 por defecto");
+                hilos = 5;
+            }
+        } catch (NumberFormatException e) {
             System.out.println("mu mal, asignandose 5 por defecto");
-            hilos = 5+1;
+            hilos = 5;
         }
+
         return hilos;
     }
 }
