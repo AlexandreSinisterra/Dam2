@@ -3,11 +3,10 @@ package P1_3;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.function.Supplier;
 
 public class Main {
-    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args){
 
         String ruta1 = "C:\\Users\\sanda\\IdeaProjects\\Dam2\\DA\\P1_3\\serial.txt";
         String ruta2 = "C:\\Users\\sanda\\IdeaProjects\\Dam2\\DA\\P1_3\\autores.xml";
@@ -23,7 +22,7 @@ public class Main {
         xmlEscribir(ruta2);
     }
 
-    public static <tipoClase> void escribirLeerProductos (String ruta,  Supplier<tipoClase> tipo) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static <tipoClase> void escribirLeerProductos (String ruta,  Supplier<tipoClase> tipo){
         /**
          * Si paso una clase como parámetro se tiene que escribir así,
          * algo importante es que si se pasa como parámetro la clase, luego no puedes utilizarla
