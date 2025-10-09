@@ -4,26 +4,35 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
         String ruta1 = "C:\\Users\\sanda\\IdeaProjects\\Dam2\\DA\\P1_3\\serial.txt";
         String ruta2 = "C:\\Users\\sanda\\IdeaProjects\\Dam2\\DA\\P1_3\\autores.xml";
+        // escribirLeerProductos(ruta1, "filipinos", 10, 2.0, ProductoTrans.class);
+       // escribirLeerProductos(ruta1, "Monster",16 , 1.60, Producto.class);
+        /**
+         * El suplier es una funcion vacía que básicamente nos devuelve un objeto, nos es util cuando queramos pasar este producto como parámetro
+         */
+        escribirLeerProductos(ruta1,() -> new Producto( "Monster", 16, 1.6));
+        escribirLeerProductos(ruta2,() -> new ProductoTrans( "Filipinos", 10, 2));
 
-        escribirLeerProductos(ruta1, "Monster",16 , 1.60, Producto.class);
-        escribirLeerProductos(ruta1, "filipinos", 10, 2.0, ProductoTrans.class);
+
         xmlEscribir(ruta2);
     }
 
-    public static <tipoClase> void escribirLeerProductos (String ruta, String nombre, int cantidad, double precio, Class<tipoClase> tipo) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public static <tipoClase> void escribirLeerProductos (String ruta,  Supplier<tipoClase> tipo) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         /**
          * Si paso una clase como parámetro se tiene que escribir así,
          * algo importante es que si se pasa como parámetro la clase, luego no puedes utilizarla
          * como variable para instanciarla, para eso tienes que llamar a su constructor y crear una nueva instancia manualmente
          * no sirve con simplemente new.
          */
-        tipoClase productoAlmacenar = tipo.getConstructor(String.class, int.class, double.class).newInstance(nombre,cantidad,precio);
+       // tipoClase productoAlmacenar = tipo.getConstructor(String.class, int.class, double.class).newInstance(nombre,cantidad,precio);
+
+        tipoClase productoAlmacenar = tipo.get();
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ruta))) {
 
