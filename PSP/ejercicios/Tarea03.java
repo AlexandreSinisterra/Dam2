@@ -15,8 +15,7 @@ public class Tarea03 {
         System.out.println("introduce el nombre/ruta del archivo a abrir/crear");
 
         String ruta = sc.nextLine();
-        String a = procesador + " \"" + ruta + "\"";
-        String[] comando = {"sh", "-c",a,"/tmp"};
+        String[] comando = {procesador,ruta};
         ProcessBuilder pb = new ProcessBuilder(comando);
 
         Process p2 = pb.start();
