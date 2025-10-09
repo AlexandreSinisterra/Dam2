@@ -10,48 +10,37 @@ public class Main {
 
         String ruta1 = "C:\\Users\\sanda\\IdeaProjects\\Dam2\\DA\\P1_3\\serial.txt";
         String ruta2 = "C:\\Users\\sanda\\IdeaProjects\\Dam2\\DA\\P1_3\\autores.xml";
-        // escribirLeerProductos(ruta1, "filipinos", 10, 2.0, ProductoTrans.class);
-       // escribirLeerProductos(ruta1, "Monster",16 , 1.60, Producto.class);
-        /**
-         * El suplier es una funcion vacía que básicamente nos devuelve un objeto, nos es util cuando queramos pasar este producto como parámetro
-         */
-        escribirLeerProductos(ruta1,() -> new Producto( "Monster", 16, 1.6));
-        escribirLeerProductos(ruta2,() -> new ProductoTrans( "Filipinos", 10, 2));
 
+        Producto producto1 = new Producto("filipinos", 10, 2.0);
+        ProductoTrans producto2 = new ProductoTrans("Monster",16 , 1.60);
+
+        escribirLeerProductos(ruta1, producto1);
+        escribirLeerProductos(ruta1, producto2);
 
         xmlEscribir(ruta2);
     }
 
-    public static <tipoClase> void escribirLeerProductos (String ruta,  Supplier<tipoClase> tipo){
-        /**
-         * Si paso una clase como parámetro se tiene que escribir así,
-         * algo importante es que si se pasa como parámetro la clase, luego no puedes utilizarla
-         * como variable para instanciarla, para eso tienes que llamar a su constructor y crear una nueva instancia manualmente
-         * no sirve con simplemente new.
-         */
-       // tipoClase productoAlmacenar = tipo.getConstructor(String.class, int.class, double.class).newInstance(nombre,cantidad,precio);
-
-        tipoClase productoAlmacenar = tipo.get();
+    public static void escribirLeerProductos (String ruta, Object tipo){
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ruta))) {
 
-            oos.writeObject(productoAlmacenar);
+            oos.writeObject(tipo);
 
         } catch (IOException e) {
             System.out.println("error, no se pudo almacenar el objeto");
         }
 
-        tipoClase productoLeer = null;
+        tipo = null;
 
         try {ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ruta));
 
-            productoLeer = (tipoClase) ois.readObject();
+            tipo = ois.readObject();
             ois.close();
 
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("error, no se pudo leer el objeto almacenado");
         }
-        System.out.println("\n producto: " + productoLeer);
+        System.out.println("\n producto: " + tipo);
     }
 
     public static void xmlEscribir (String ruta){
