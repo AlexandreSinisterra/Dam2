@@ -10,7 +10,7 @@ public class Tarea21 {
             coches[i] = new Coche(garaje, i+1);
             coches[i].start();
         }
-        // En main:
+
         while (true) {
             garaje.mostrarEstado();
             Thread.sleep(10000);
@@ -53,9 +53,20 @@ class Coche extends Thread {
 }
 
 class Parking {
+    private int[][] garaje = {
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0}
+    };
+    private static final String RESET = "\u001B[0m";
+    private static final String RED = "\u001B[31m";
+    private static final String GREEN = "\u001B[32m";
+
 
     public synchronized void mostrarEstado() throws InterruptedException {
-            System.out.println("\nEstado actual del garaje:");
+            System.out.println("\nEstado actual del garaje:\n"+GREEN);
 
             System.out.print("    ");
             for (int col = 0; col < garaje[0].length; col++) {
@@ -75,17 +86,9 @@ class Parking {
                 }
                 System.out.println();
             }
-        System.out.println();
+        System.out.println(RESET);
     }
 
-
-    private int[][] garaje = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0}
-    };
 
     public synchronized int[] aparcar(int coche) throws InterruptedException {
         int plazaLibre = 1;
@@ -107,14 +110,14 @@ class Parking {
             }
             if (plazaLibre == 0)break;
             else {
-                System.out.println("Espere coche "+coche+", el garaje está lleno");
+                System.out.println(RED+"Espere coche "+coche+", el garaje está lleno"+RESET);
                 wait();
             }
         }while (true);
 
         garaje[filaPlaza][columnaPlaza] = coche;
 
-        System.out.println("El coche " + coche + " aparcó en [" + filaPlaza + "][" + columnaPlaza + "]");
+        System.out.println("+ El coche " + coche + " aparcó en [" + filaPlaza + "][" + columnaPlaza + "]");
 
         posicion[0] = filaPlaza;
         posicion[1] = columnaPlaza;
@@ -123,7 +126,7 @@ class Parking {
 
     public synchronized void irse(int coche, int[] posicion) throws InterruptedException {
         garaje[posicion[0]][posicion[1]] = 0;
-        System.out.println("El coche " + coche + " se fue en [" + posicion[0] + "][" + posicion[1] + "]");
+        System.out.println("- El coche " + coche + " se fue en [" + posicion[0] + "][" + posicion[1] + "]");
         notifyAll();
     }
 }
