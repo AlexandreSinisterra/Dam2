@@ -1,1 +1,0 @@
-Aqui iré creando apuntes de cosas que aprendo por mi cuenta y que me parecieron interesantes.
