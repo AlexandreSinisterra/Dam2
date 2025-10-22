@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Tarea19 extends Thread{
+    private static final Object elCandado = new Object();
     public static int nVocales = 0;
     public char letra;
     public String frase;
@@ -21,12 +22,15 @@ public class Tarea19 extends Thread{
 
     @Override
     public void run() {
-        synchronized (Tarea19.class) {
+
+        int nVocalesde1Tipo = 0;
             for (int i = 0; i<frase.length();i++){//bucle que recorre todo el String
                 letraActual = frase.charAt(i);//va copiando cada letra
-                if (letraActual==letra) nVocales++;//y si es igual a la que el hilo esta buscando, suma 1 al Nº de vocales
-            }
+                if (letraActual==letra) nVocalesde1Tipo++;//y si es igual a la que el hilo esta buscando, suma 1 al Nº de vocales
         }
+            synchronized (elCandado){
+                nVocales += nVocalesde1Tipo;
+            }
     }
 
 
