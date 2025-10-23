@@ -28,7 +28,7 @@ services:
       MYSQL_DATABASE: nxcloud_db
       MYSQL_USER: nx_user_db
       MYSQL_HOST: db
-//a
+
   phpmyadmin:
     image: phpmyadmin
     depends_on:
