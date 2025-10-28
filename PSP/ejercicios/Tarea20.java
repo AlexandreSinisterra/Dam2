@@ -68,7 +68,6 @@ class Lector extends Thread {
 }
 
 
-
 class Buzon {
     private String mensajeBuzon = null;
 
