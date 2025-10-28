@@ -1,35 +1,5 @@
 package ejerciciosRepaso;
 
-/**
- *
- *
- *
- *
- *
- *
- *
- *                  AVISO
- *
- *              EL PROGRAMA ESTA MAL HECHO
- *
- *              YA LO ARREGLARE MAÑANA
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
 public class Simulacro {
     public static void main(String[] args) throws InterruptedException {
         Pista pista = new Pista();
@@ -44,6 +14,8 @@ public class Simulacro {
 
         tortuga.join();
         liebre.join();
+
+        System.out.println("el ganador es: "+pista.getGanador());
     }
 }
 
@@ -114,11 +86,13 @@ class Liebre extends Thread{
 class Pista{
     private boolean carreraTerminada= false;
     private String ganador = null;
+    private Boolean turnoExtra = true;
     private int posicionTortuga = 1;
     private int posicionLiebre = 1;
 
     public synchronized boolean moverLiebre(int casillas){
-        if(carreraTerminada) return true;
+        if(carreraTerminada&&!(turnoExtra)) return true;
+        if (carreraTerminada&&turnoExtra)turnoExtra= false;
         posicionLiebre+=casillas;
         if (posicionLiebre<1)posicionLiebre=1;
 
@@ -128,7 +102,8 @@ class Pista{
     }
 
     public synchronized boolean moverTortuga(int casillas){
-        if(carreraTerminada) return true;
+        if(carreraTerminada&&!(turnoExtra)) return true;
+        if (carreraTerminada&&turnoExtra)turnoExtra= false;
         posicionTortuga+=casillas;
         if (posicionTortuga<1)posicionTortuga=1;
 
@@ -138,19 +113,22 @@ class Pista{
     }
 
     private synchronized boolean verificarGanador(){
-        if (posicionTortuga >= 70 && posicionLiebre >= 70) {
-            carreraTerminada = true;
-            System.out.println("empate");
-            return true;
-        } else if (posicionTortuga >= 70) {
-            carreraTerminada = true;
-            System.out.println("🐢 Tortuga gana");
-            return true;
-        } else if (posicionLiebre >= 70) {
-            carreraTerminada = true;
-            System.out.println("🐇 Liebre gana");
-            return true;
-        }
+            if (posicionLiebre >= 70 && posicionTortuga >= 70){
+                ganador = "empate";
+                return true;
+            }else if (posicionTortuga >= 70) {
+                carreraTerminada = true;
+                ganador = "T";
+                return true;
+            } else if (posicionLiebre >= 70) {
+                carreraTerminada = true;
+                ganador = "L";
+                return true;
+            }
         return false;
+    }
+
+    public String getGanador() {
+        return ganador;
     }
 }
