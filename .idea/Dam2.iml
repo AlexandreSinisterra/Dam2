@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/PSP" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/PMDM" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SXE" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Apuntes" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

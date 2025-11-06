@@ -26,6 +26,12 @@ MaquinaDeCafe/
 
 ---
 
+## 🏗️ Esquema del prototipo del programa
+
+![img.png](img.png)
+
+---
+
 ## 🔄 Estados de la máquina
 
 La lógica de la máquina se gestiona con una **clase sellada** `EstadoMaquinaCafe`, que contiene los posibles estados:
