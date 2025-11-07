@@ -20,14 +20,20 @@ public class Servidor {
             while (true) {
                 recibido = recibir.readLine();
 
+                /**
+                 * la linea recibida nunca va a ser null
+                 * si se presiona la tecla 'enter', el mensaje recibido seria ""
+                 * y en caso de detectar anteriormente el "" y cambiarlo por un null
+                 * el printwriter lo transformaria en una cadena: "null"
+                 */
+                System.out.println(recibido);
+
                 if (recibido.equalsIgnoreCase("")) {
-                    recibido = null;
-                    enviar.println(recibido);
+                    System.out.println("se ha detectado un mensaje vacio, cerrando bucle del servidor");
                     break;
                 }
 
                 if (recibido.equalsIgnoreCase("adios")) {
-                    enviar.println(recibido);
                     break;
                 }
 

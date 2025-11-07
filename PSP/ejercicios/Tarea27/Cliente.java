@@ -24,20 +24,17 @@ public class Cliente {
 
                 String respuesta = recibir.readLine();
 
-                if ("adios".equalsIgnoreCase(respuesta)) {
+                if ("adios".equalsIgnoreCase(texto)) {
                     System.out.println("cerrando la conexion");
                     break;
                 }
 
                 /**
-                 * Al pasar el mensaje de lo que escribimos por teclado, aunque presionemos 'enter'
-                 * el servidor recibira "" y no null, ademas he hecho desde el servidor que si detecte el mensaje ""
-                 * nos envie null, pero lo que recibiria el cliente seria el null convertido en una cadena: "null"
+                 * El bucle solo termina si escribimos adios
+                 * a pesar de que el bucle del servidor podria estar cerrado
+                 * al haber mandado un null
                  */
-                if (respuesta.equalsIgnoreCase("null")) {
-                    System.out.println("se ha detectado un mensaje vacio, cerrando conexion");
-                    break;
-                }
+
                 System.out.println(respuesta);
             }
 
