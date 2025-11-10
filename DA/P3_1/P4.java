@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class P4 {
-    private static final String url = "jdbc:postgresql://10.0.2.15:5432/probas";
+    private static final String url = "jdbc:postgresql://10.0.9.194:5432/probas";
     private static final String user = "postgres";
     private static final String contraseña = "admin";
 
