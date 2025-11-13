@@ -22,12 +22,12 @@ public class Cliente {
 
                 enviar.println(texto);
 
-                String respuesta = recibir.readLine();
-
                 if ("adios".equalsIgnoreCase(texto)) {
                     System.out.println("cerrando la conexion");
                     break;
                 }
+
+                String respuesta = recibir.readLine();
 
                 /**
                  * El bucle solo termina si escribimos adios
