@@ -1,0 +1,42 @@
+services:
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: sxe_pg_db
+      POSTGRES_PASSWORD: sxe_user_password_db
+      POSTGRES_USER: sxe_user_db
+    logging:
+      driver: none
+    restart: unless-stopped
+    volumes:
+      - db_datos:/var/lib/postgresql/data
+
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    depends_on:
+      - db
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: sxe_user_db
+      DB_PASS: sxe_user_password_db
+      DB_NAME: sxe_pg_db
+    restart: unless-stopped
+    ports:
+      - "8080:3000"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - db
+
+volumes:
+  db_datos:
