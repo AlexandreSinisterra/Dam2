@@ -1,5 +1,10 @@
-package ejercicios.Tarea35;
 
+
+//hay que importar la ibreria gson de google para que funcione el programa
+
+/**
+ *
+ * package ejercicios.Tarea35;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -18,23 +23,23 @@ import java.util.Scanner;
 
 public class Tarea35 {
     public static void main(String[] args) throws IOException, InterruptedException {
-       List<Moneda> monedas = cargar_Monedas();
+        List<Moneda> monedas = cargar_Monedas();
 
-       while (true) {
-           String supuesto_nombre = leerFrase();
-           boolean moneda_encontrada = false;
-           for (Moneda m : monedas) {
-               if (m.getSymbol().equals(supuesto_nombre) || m.getName().equals(supuesto_nombre)) {
-                   System.out.println("Nombre: "+m.getName());
-                   System.out.println("Simbolo: "+m.getSymbol());
-                   System.out.println("Valor: "+m.getPrice_usd()+"$");
-                   System.out.println("TOP: "+m.getRank());
-                   System.out.println("Variacion 24h: "+m.getPc24());
-                   moneda_encontrada = true;
-               }
-           }
-           if (!moneda_encontrada) System.out.println("no se ha encontrado la moneda");
-       }
+        while (true) {
+            String supuesto_nombre = leerFrase();
+            boolean moneda_encontrada = false;
+            for (Moneda m : monedas) {
+                if (m.getSymbol().equals(supuesto_nombre) || m.getName().equals(supuesto_nombre)) {
+                    System.out.println("Nombre: "+m.getName());
+                    System.out.println("Simbolo: "+m.getSymbol());
+                    System.out.println("Valor: "+m.getPrice_usd()+"$");
+                    System.out.println("TOP: "+m.getRank());
+                    System.out.println("Variacion 24h: "+m.getPc24());
+                    moneda_encontrada = true;
+                }
+            }
+            if (!moneda_encontrada) System.out.println("no se ha encontrado la moneda");
+        }
     }
 
     public static String leerFrase() {
@@ -44,7 +49,7 @@ public class Tarea35 {
         str = sc.nextLine();
         return str;
     }
-
+*/
     /**
      * Lo hice creando objetos a partir del json porque me parecía una practica interesante
      * no se que tan bien estará realizar esta práctica, ya que crear más de 100 objetos no
@@ -55,6 +60,7 @@ public class Tarea35 {
      * @throws IOException
      * @throws InterruptedException
      */
+    /**
     public static List<Moneda> cargar_Monedas() throws IOException, InterruptedException {
         List<Moneda> monedas = new ArrayList<>();
 
@@ -74,12 +80,13 @@ public class Tarea35 {
 
         for (JsonElement obj : gsonArr) { //En este bucle recorre todas las monedas
             JsonObject gsonObj = obj.getAsJsonObject();
-
+*/
             /**
              * Simplemente aqui en el bucle podrías comparar el nombre que el cliente nos da
              * con el nombre y simbolo con los ".get", y si algunp de ellos es el mismo, pues que
              * nos salga por pantalla la informacion de esta moneda
              */
+            /**
             Moneda moneda = new Moneda(
                     gsonObj.get("name").getAsString(),
                     gsonObj.get("symbol").getAsString(),
@@ -92,3 +99,4 @@ public class Tarea35 {
         return monedas;
     }
 }
+*/
