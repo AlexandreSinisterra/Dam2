@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SecuritySuite {
-    private static final AtomicBoolean encontrada = new AtomicBoolean(false);
+    private static volatile boolean encontrada = false;
     private static final String leak = "4a630b8e79a0cd2fbae3f58e751abb28d0f4918f76af188d8996f13fabe08af8";
 
     public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class SecuritySuite {
     }
     public static void fuerzaBruta(){
 
-        encontrada.set(false);
+        encontrada = false;
 
         ExecutorService pool = Executors.newFixedThreadPool(4);
         char[] letras = "abcdefghijklmnñopqrstuvwxyz".toCharArray();
@@ -69,13 +69,13 @@ public class SecuritySuite {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-        for (char c1 = inicio; c1 <= fin && !encontrada.get(); c1++) {
+        for (char c1 = inicio; c1 <= fin && !encontrada; c1++) {
             for (char c2 : letras) {
-                if (encontrada.get()) break;
+                if (encontrada) break;
                 for (char c3 : letras) {
-                    if (encontrada.get()) break;
+                    if (encontrada) break;
                     for (char c4 : letras) {
-                        if (encontrada.get()) break;
+                        if (encontrada) break;
 
                         String intento = "" + c1 + c2 + c3 + c4;
 
@@ -83,9 +83,11 @@ public class SecuritySuite {
                         byte[] resumen = md.digest();
                         String mensajeCifrado = HexFormat.of().formatHex(resumen);
                         if (mensajeCifrado.equals(leak)) {
-                            if (encontrada.compareAndSet(false, true)) {
-                                System.out.println("Encontrada por " + Thread.currentThread().getName() + " -> " + intento);
-                                System.out.println("");
+                            synchronized (SecuritySuite.class) {
+                                if (!encontrada) {
+                                    encontrada = true;
+                                    System.out.println("Encontrada por " + Thread.currentThread().getName() + " -> " + intento);
+                                }
                             }
                             break;
                         }
