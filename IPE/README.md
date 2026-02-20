@@ -44,7 +44,7 @@ por turnos, pero enfocado más a la historia.
 *   **Ingresos semanais:** 10 clientes × 8,20 € = 82 €
 *   **Ingresos mensuais:** 82 € / semana × 4 semanas = 328 €
 *   **Ingresos Anuais Totais:** 328 € / mes × 12 meses = 3.936 €
-
+* Aumentados x3 --> 11.808 €
 ## Orzamentos, Gastos e Beneficio Estimado
 
 ### Gastos Fixos (Primeiro Ano):
@@ -53,13 +53,19 @@ por turnos, pero enfocado más a la historia.
 *   **Publicación en Steam (Steam Direct)** 100 € (opcion de publicar la demo primero en itchio 0€)
 *   **(opcional marketing, si añadimos el marketing habria que subir los ingresos de 1er año):** 300€
 *   **Total Gastos Fixos:** 115-415€
-
+*   **mano de obra** (basica -> gemini, intermedia (mi trabajo), extra 500€)
+*   **lugar de trabajo:** 2000€
+*   **portatil extra:** 700€
+*   **Total con lo nuevo visto en clase:** ~3500 €
+  
 ### Gastos Fixos (Anuais):
 *   **Comisión da Plataforma Dixital (Steam – 30 %)** Estimado 1.180,80 €
+*   **Comision con los nuevos ingresos estimados** 3.500€
 
 ### Beneficio Estimado (Primeiro Ano):
 *   **Ingresos Totais:** 3.936 €
 *   **Gastos Totais:** 1.180,80 € (Fixos) + 115-415€ (Primeiro Ano) = 1.295,80 € – 1.595,80 €
 *   **Beneficio Bruto (antes de impostos):** 3.936 € − (1.295,80 € – 1.595,80 €) = **2.340,20 € – 2.640,20 €**
+*   **Beneficios Totales con nuevos ingresos y gastos:** 4.808 €
 
 ---
